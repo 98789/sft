@@ -3,10 +3,12 @@ from math import pi
 from numpy import abs
 from numpy import arange
 from numpy import asarray
+from numpy import copyto
+from numpy import empty
 from numpy import exp
 from numpy import hstack
+from numpy import log2
 from numpy import vstack
-from numpy import zeros
 
 def triangular(N):
    """triangular weight"""
@@ -24,11 +26,13 @@ def exponential(N):
     nk = arange(N/2)
     return exp(-2j * pi * nk / N)
 
-def fft(xcx, N=0, W=exponential):
+def fft(xcx, N=1024, W=exponential):
     """perform fft"""
 
-    Xcx = asarray(xcx[:N], dtype=complex)
-    N = min(N, Xcx.shape[0])
+    N = min(N, xcx.shape[0])
+    N = 2**int(log2(N))
+    Xcx = empty(N, dtype=complex)
+    copyto(Xcx, asarray(xcx[:N], dtype=complex))
 
     Wcx = W(N)
 
