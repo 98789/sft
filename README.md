@@ -12,9 +12,9 @@ fft(xcx, N=0, W=exponential)
 
 Inputs:
 
-xcx: vector of samples (time domain).
-N: Number of outputs.
-W: Weight to be used: exponential, triangular or any user defined weight function.
+xcx: vector of samples (time domain).  
+N: Number of outputs.  
+W: Weight to be used: exponential, triangular or any user defined weight function.  
 
 Outputs:
 
